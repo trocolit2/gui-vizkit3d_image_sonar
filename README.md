@@ -1,6 +1,6 @@
 vizkit3d_image_sonar
 =============
-Image sonar simulation all embedded on GPU
+Image sonar simulation all embedded in GPU
 
 
 
@@ -34,16 +34,16 @@ the Rock CMake macros automatically handle the project's build process and
 install setup properly.
 
 STRUCTURE
--- src/ 
+-- src/
 	Contains all header (*.h/*.hpp) and source files
 -- build/
 	The target directory for the build process, temporary content
 -- bindings/
 	Language bindings for this package, e.g. put into subfolders such as
-   |-- ruby/ 
+   |-- ruby/
         Ruby language bindings
 -- viz/
-        Source files for a vizkit plugin / widget related to this library 
+        Source files for a vizkit plugin / widget related to this library
 -- resources/
 	General resources such as images that are needed by the program
 -- configuration/
