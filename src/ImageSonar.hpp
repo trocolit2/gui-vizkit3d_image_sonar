@@ -18,6 +18,8 @@ class ImageSonar {
         return _image_sonar_node;
     }
 
+    void setCameraPosition(osg::Vec3d position, osg::Vec3d eye, osg::Vec3d up);
+
     void setMaxRange(float maxRange);
     float getMaxRange();
 

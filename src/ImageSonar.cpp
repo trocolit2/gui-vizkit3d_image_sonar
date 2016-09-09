@@ -38,6 +38,9 @@ osg::ref_ptr<osg::Group> ImageSonar::createImageSonarShaderNode(
                                 float maxHorizontalAngle,
                                 float maxVerticalAngle){
 
+
+  std::cout<<" out 1 "<<std::endl;
+
   osg::ref_ptr<osg::Group> localRoot = new osg::Group();
   osg::ref_ptr<osg::Program> program(new osg::Program());
 
@@ -53,22 +56,46 @@ osg::ref_ptr<osg::Group> ImageSonar::createImageSonarShaderNode(
   osg::ref_ptr<osg::StateSet> ss = localRoot->getOrCreateStateSet();
   ss->setAttribute(program);
 
-  osg::ref_ptr<osg::Uniform> farPlaneUniform(
-                                        new osg::Uniform("maxRange",
-                                                         maxRange));
-  ss->addUniform(farPlaneUniform);
+  // add uniform data
+  // osg::ref_ptr<osg::Uniform> max_range_uniform(
+  //                                     new osg::Uniform("max_range", maxRange));
+  // ss->addUniform(max_range_uniform);
+  //
+  // osg::ref_ptr<osg::Uniform> angle_x_uniform(
+  //                         new osg::Uniform( "max_x_angle", maxHorizontalAngle));
+  // ss->addUniform(angle_x_uniform);
+  //
+  // osg::ref_ptr<osg::Uniform> angle_y_uniform(
+  //                           new osg::Uniform( "max_y_angle", maxVerticalAngle));
+  // ss->addUniform(angle_y_uniform);
 
-  osg::ref_ptr<osg::Uniform> maxHorizontalAngleUniform(
-                                      new osg::Uniform( "limitHorizontalAngle",
-                                                        maxHorizontalAngle));
-  ss->addUniform(maxHorizontalAngleUniform);
 
-  osg::ref_ptr<osg::Uniform> maxVerticalAngleUniform(
-                                        new osg::Uniform( "limitVerticalAngle",
-                                                          maxVerticalAngle));
-  ss->addUniform(maxVerticalAngleUniform);
+  // camera data
+  osg::Vec3d position, eye, up;
+  ss->addUniform( new osg::Uniform( "camera_position", position) );
+  ss->addUniform( new osg::Uniform( "camera_eye", eye) );
+  ss->addUniform( new osg::Uniform( "camera_up", up) );
 
   return localRoot;
+}
+
+
+// void NormalDepthMap::setMaxRange(float maxRange) {
+//     _normalDepthMapNode->getOrCreateStateSet()->getUniform("farPlane")->set(maxRange);
+// }
+
+void ImageSonar::setCameraPosition( osg::Vec3d position,
+                                    osg::Vec3d eye,
+                                    osg::Vec3d up){
+
+  std::cout<<" out 2 "<<std::endl;
+  _image_sonar_node->getOrCreateStateSet()->
+                                  getUniform("camera_position")->set(position);
+  _image_sonar_node->getOrCreateStateSet()->
+                                  getUniform("camera_eye")->set(eye);
+  _image_sonar_node->getOrCreateStateSet()->
+                                  getUniform("camera_up")->set(up);
+
 }
 
 }

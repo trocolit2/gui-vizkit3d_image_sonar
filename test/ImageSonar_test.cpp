@@ -100,6 +100,7 @@ BOOST_AUTO_TEST_CASE(first_test){
 
   capture.setBackgroundColor(osg::Vec4d(0, 0, 0, 0));
 
+
   osg::ref_ptr<osg::Group> root = new osg::Group();
   viewPointsFromScene(&eyes, &centers, &ups);
   makeSimpleScene(root);
@@ -107,7 +108,7 @@ BOOST_AUTO_TEST_CASE(first_test){
 
   for (uint i = 0; i < eyes.size(); ++i) {
     capture.setCameraPosition(eyes[i], centers[i], ups[i]);
-
+    image_sonar.setCameraPosition(centers[i], eyes[i], ups[i]);
 
     osg::ref_ptr<osg::Image> osgImage =
           capture.grabImage(image_sonar.getImageSonarNode());
@@ -119,8 +120,8 @@ BOOST_AUTO_TEST_CASE(first_test){
     cv::imshow("out image", cv_image);
 
 
-    cv::Mat3b cv_plot = plotSonarTest(cv_image * height, 1000, 1000);
-    cv::imshow("out plot", cv_plot);
+    // cv::Mat3b cv_plot = plotSonarTest(cv_image * height, 1000, 1000);
+    // cv::imshow("out plot", cv_plot);
 
     cv::waitKey();
   }
