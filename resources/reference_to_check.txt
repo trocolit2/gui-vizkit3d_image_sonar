@@ -1,0 +1,10 @@
+http://www.cs.umd.edu/~djacobs/CMSC427/Transformations2.pdf
+http://gamedev.stackexchange.com/questions/22283/how-to-get-translation-from-view-matrix
+http://stackoverflow.com/questions/349050/calculating-a-lookat-matrix
+https://en.wikipedia.org/wiki/Transformation_matrix
+https://www.fastgraph.com/makegames/3drotation/
+https://github.com/stackgl/glsl-look-at/blob/gh-pages/index.glsl
+https://www.opengl.org/discussion_boards/showthread.php/172403-getting-camera-position-relative-to-vertex
+https://www.opengl.org/sdk/docs/man/html/gl_FragCoord.xhtml
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+http://www.geeks3d.com/20141114/glsl-4x4-matrix-mat4-fields/
