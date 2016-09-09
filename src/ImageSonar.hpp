@@ -8,7 +8,9 @@ class ImageSonar {
 
   public:
     ImageSonar();
-    ImageSonar(float maxRange, float maxHorizontalAngle, float maxVerticalAngle);
+    ImageSonar(float maxRange,
+               float maxHorizontalAngle,
+               float maxVerticalAngle);
 
     void addNodeScene(osg::ref_ptr<osg::Node> node);
 

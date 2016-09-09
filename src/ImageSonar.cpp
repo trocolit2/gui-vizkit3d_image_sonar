@@ -29,6 +29,10 @@ _image_sonar_node = createImageSonarShaderNode( maxRange,
 }
 
 
+void ImageSonar::addNodeScene(osg::ref_ptr<osg::Node> node){
+  _image_sonar_node->addChild(node);
+}
+
 osg::ref_ptr<osg::Group> ImageSonar::createImageSonarShaderNode(
                                 float maxRange,
                                 float maxHorizontalAngle,
