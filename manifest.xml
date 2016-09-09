@@ -9,6 +9,7 @@
   <depend package="base/cmake" />
   <!-- rock library dependencies -->
 	<depend package="gui/vizkit3d" />
+  <depend package="gui/vizkit3d_normal_depth_map" />
 	<depend package="base/types" />
 	<depend package="gui/vizkit" />
 	<!-- os dependencies -->
