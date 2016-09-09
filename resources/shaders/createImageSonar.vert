@@ -1,6 +1,8 @@
 #version 130
 
-attribute vec4 position;
+uniform vec3 camera_position;
+uniform vec3 camera_eye;
+uniform vec3 camera_up;
 
 out vec3 out_vertex;
 out vec3 normal;
@@ -30,17 +32,20 @@ void main() {
 
   // polar to cartesian points
   //float distance_relative = distance3d * im_height / maxRange;
-
   float distance_relative = distance3d / maxRange;
   vec2 pos_sonar = vec2( sin(angles.x), cos(angles.y)) * distance_relative;
 
-  out_vertex =  vec3(pos_sonar.x, pos_sonar.y, 0);
+
+  out_vertex =  vec3( pos_sonar.x + camera_position.x,
+                      pos_sonar.y + camera_position.y,
+                      0 + camera_position.z);
 
   //vec2 temp_pos = (gl_ModelViewMatrix * pos_sonar).xy;
-  //gl_Position = gl_ProjectionMatrix * vec4(pos_sonar, 1.0, 1.0);
+  //gl_Position = gl_ProjectionMatrix * vec4(pos_sonar, 1.0);
 
 
-  gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
-  //gl_Position = gl_ModelViewMatrix * gl_Vertex;
+  //gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+  //gl_Position = gl_ModelViewMatrix * vec4(out_vertex, 1.0);
+  gl_Position = gl_ModelMatrix * vec4(out_vertex, 1.0);
 
 }
